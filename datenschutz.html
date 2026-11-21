@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<!-- Entwurf: vor Veröffentlichung rechtlich prüfen (siehe CLAUDE.md „Vor dem Release“). -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BibReady – Datenschutzerklärung</title>
+<style>
+  :root { --text: #1c1c1e; --muted: #6e6e73; --bg: #ffffff; --line: #e5e5ea; --accent: #0a7f5a; }
+  @media (prefers-color-scheme: dark) {
+    :root { --text: #f2f2f7; --muted: #a1a1a6; --bg: #000000; --line: #2c2c2e; --accent: #34c38f; }
+  }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.8rem; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 32px 0 8px; padding-top: 16px; border-top: 1px solid var(--line); }
+  p, li { margin: 6px 0; }
+  .muted { color: var(--muted); }
+  a { color: var(--accent); }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Datenschutzerklärung</h1>
+<p class="muted">BibReady – App für Pflichtausrüstung bei Ausdauerrennen · Stand: 21. November 2026</p>
+
+<h2>1. Verantwortlicher</h2>
+<p>SB Digital Solutions<br>
+Samuel Bentele<br>
+Notzenhaus 22<br>
+88069 Tettnang<br>
+E-Mail: support@bibready.app</p>
+
+<h2>2. Das Wichtigste in Kürze</h2>
+<ul>
+  <li>Wir verarbeiten nur die Daten, die für die App nötig sind: dein Konto, dein Profil, deine Ausrüstung, deine Rennen und Checklisten.</li>
+  <li>Es gibt keine Werbung, kein Tracking und keine Analyse-Werkzeuge.</li>
+  <li>Deine Daten liegen auf Servern in Frankfurt am Main.</li>
+  <li>Nur wenn du ein Rennen automatisch ausfüllen lässt, wird der Inhalt der Rennseite bzw. dein eingefügter Text zur Auswertung an einen KI-Dienst übermittelt (siehe Abschnitt 5).</li>
+  <li>Du kannst dein Konto mit allen Daten jederzeit in der App löschen.</li>
+</ul>
+
+<h2>3. Konto und Anmeldung</h2>
+<p>Für die Nutzung legst du ein Konto mit E-Mail-Adresse und Passwort an. Das Passwort wird nur verschlüsselt (als Hash) gespeichert. Wir nutzen deine E-Mail-Adresse für die Anmeldung und für E-Mails, die das Konto betreffen (z. B. Bestätigung oder Zurücksetzen des Passworts).</p>
+<p>Die E-Mails zur Anmeldung werden über den Anmeldedienst von Supabase (siehe Abschnitt 8) versendet.</p>
+<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Bereitstellung der App gemäß Nutzungsvertrag).</p>
+
+<h2>4. Deine Inhalte in der App</h2>
+<p>Wir speichern, was du in der App anlegst: Ausrüstungsteile (Name, Kategorie, Gewicht), deine Rennen und Distanzen, privat angelegte Rennen mit ihrer Ausrüstungsliste sowie deine Checklisten (Zuordnung und Abhaken). Diese Daten sind nur für dich sichtbar.</p>
+<p>Im Profil kannst du freiwillig einen Anzeigenamen sowie Links zu deinen öffentlichen Läuferprofilen bei ITRA (itra.run) und UTMB (utmb.world) hinterlegen. Wir speichern nur den Link selbst und rufen von diesen Seiten keine Daten ab. Tippst du auf den Link, öffnet sich die jeweilige Seite in deinem Browser; dort gelten die Datenschutzbestimmungen des jeweiligen Anbieters. Die Statistik im Profil (z. B. gelaufene Rennen, Kilometer) wird nur aus deinen eigenen Rennen in der App berechnet.</p>
+<p>Der gemeinsame Rennkatalog enthält nur öffentlich verfügbare Angaben der Veranstalter (Rennen, Distanzen, Pflichtausrüstung) und keine personenbezogenen Daten. Rennen, die du selbst anlegst, landen nicht im Katalog.</p>
+<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+
+<h2>5. Fehler im Rennkatalog melden</h2>
+<p>Über „Fehler melden“ in der Packliste kannst du uns auf Fehler oder Änderungen bei einem Rennen aus dem Katalog hinweisen. Wir speichern dazu deine Meldung (Art des Fehlers, betroffenes Rennen bzw. Teil, dein Text), den Zeitpunkt und dein Konto, um Missbrauch zu begrenzen (höchstens 10 Meldungen pro Tag) und bei Rückfragen zuordnen zu können. Die Meldungen nutzen wir nur, um den Katalog zu korrigieren. Bitte schreib keine persönlichen Angaben in den Text.</p>
+<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (von dir genutzte Funktion) und Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem korrekten Katalog und am Schutz vor Missbrauch).</p>
+
+<h2>6. Rennen automatisch ausfüllen (KI-Auswertung)</h2>
+<p>Wenn du die Funktion „Link auslesen“ oder „Text einfügen“ nutzt, passiert Folgendes:</p>
+<ul>
+  <li>Der Link bzw. der eingefügte Text wird an unseren Server gesendet. Bei einem Link lädt der Server die öffentliche Rennseite.</li>
+  <li>Damit auch Seiten lesbar sind, die ihre Inhalte erst im Browser nachladen, lässt der Server die öffentliche Rennseite zusätzlich über den Dienst <strong>Jina Reader</strong> der Jina AI GmbH, Berlin, darstellen. Dabei wird nur der Link der Rennseite übermittelt, keine Daten über dich.</li>
+  <li>Der Seiteninhalt bzw. dein Text wird zur Auswertung an <strong>Anthropic PBC</strong>, 548 Market Street, PMB 90375, San Francisco, CA 94104, USA, übermittelt. Anthropic liefert daraus eine strukturierte Ausrüstungsliste zurück. Steht die Ausrüstungsliste auf einer verlinkten Unterseite, kann Anthropic dazu weitere öffentliche Seiten des Veranstalters abrufen.</li>
+  <li>An Anthropic werden <strong>keine</strong> Kontodaten übermittelt (keine E-Mail-Adresse, keine Nutzerkennung). Bitte füge in „Text einfügen“ keine persönlichen Angaben ein.</li>
+  <li>Nach den Bedingungen von Anthropic werden über die Schnittstelle übermittelte Inhalte nicht zum Training von KI-Modellen verwendet.</li>
+  <li>Die Übermittlung in die USA erfolgt auf Grundlage geeigneter Garantien nach Art. 46 DSGVO (EU-Standardvertragsklauseln) bzw. eines Angemessenheitsbeschlusses, soweit der Anbieter zertifiziert ist.</li>
+</ul>
+<p>Damit die Funktion nicht missbraucht wird, speichern wir pro Auswertung den Zeitpunkt und die Art (Link oder Text) zu deinem Konto und begrenzen die Anzahl pro Tag.</p>
+<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (von dir angeforderte Funktion); für die Begrenzung Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am Schutz vor Missbrauch).</p>
+
+<h2>7. Daten auf deinem Gerät (Offline-Modus)</h2>
+<p>Damit du deine Packliste auch ohne Internetverbindung nutzen kannst (z. B. bei der Startnummernausgabe in den Bergen), speichert die App deine Rennen, Packlisten und Ausrüstung zusätzlich auf deinem Gerät. Änderungen, die du offline machst, werden übertragen, sobald wieder eine Verbindung besteht. Beim Abmelden wird dieser Zwischenspeicher gelöscht. Außerdem merkt sich die App auf dem Gerät, ob sie dir die Start-Ausrüstung schon angeboten hat.</p>
+<p>Wenn du die Einkaufsliste „In Erinnerungen übernehmen“ lässt, fragt die App einmalig nach Zugriff auf deine Erinnerungen und legt dort eine Liste an. Die Einträge werden von Apple auf deinem Gerät bzw. in deiner iCloud gespeichert; wir erhalten keine Daten aus deinen Erinnerungen.</p>
+<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO; § 25 Abs. 2 Nr. 2 TDDDG (für die Funktion unbedingt erforderliche Speicherung).</p>
+
+<h3>Wetter-Check</h3>
+<p>Für den Wetter-Check (BibReady Pro) ermittelt die App aus dem Ort deines Rennens (z. B. „Grainau“) über den Kartendienst von Apple die Koordinaten und fragt mit diesen Koordinaten und dem Renndatum Wetterdaten bei Open-Meteo (open-meteo.com, Schweiz) ab. Dabei werden nur der Rennort und das Datum übermittelt, nicht dein Standort und keine Kontodaten. Die Ergebnisse werden einige Stunden auf deinem Gerät gespeichert.</p>
+
+<h2>8. Hosting und Server</h2>
+<p>Die App nutzt <strong>Supabase</strong> (Supabase Inc., USA) für Anmeldung, Datenbank und Serverfunktionen. Die Daten werden in einem Rechenzentrum in Frankfurt am Main (EU) gespeichert. Mit Supabase besteht ein Vertrag zur Auftragsverarbeitung (Art. 28 DSGVO). Beim Zugriff auf den Server werden technisch notwendige Daten wie IP-Adresse und Zeitpunkt in Server-Protokollen verarbeitet, um den Betrieb und die Sicherheit zu gewährleisten (Art. 6 Abs. 1 lit. f DSGVO).</p>
+
+<h3>Website bibready.app</h3>
+<p>Diese Website (bibready.app mit Impressum, Datenschutzerklärung, Nutzungsbedingungen und Support) wird über <strong>GitHub Pages</strong> bereitgestellt (GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA). Beim Aufruf verarbeitet GitHub technisch notwendige Daten wie IP-Adresse, Zeitpunkt und aufgerufene Seite in Server-Protokollen, um die Seiten auszuliefern und vor Angriffen zu schützen. GitHub ist nach dem EU-US Data Privacy Framework zertifiziert. Die Website setzt keine Cookies und nutzt keine Analyse- oder Tracking-Werkzeuge. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (sichere und zuverlässige Bereitstellung der Website).</p>
+
+<h2>9. Speicherdauer und Löschung</h2>
+<p>Wir speichern deine Daten, solange du dein Konto hast. Unter <em>Profil → Einstellungen → Konto löschen</em> kannst du dein Konto jederzeit löschen. Dabei werden alle zugehörigen Daten endgültig entfernt: Profil, Ausrüstung, Rennen, Checklisten, privat angelegte Rennen, deine Fehlermeldungen und das Protokoll der KI-Auswertungen.</p>
+
+<h2>10. Deine Rechte</h2>
+<p>Du hast das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch gegen Verarbeitungen auf Grundlage berechtigter Interessen (Art. 21). Schreib uns dazu einfach an die oben genannte E-Mail-Adresse.</p>
+<p>Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren, insbesondere in dem EU-Mitgliedstaat deines Wohnorts.</p>
+
+<h2>11. Änderungen</h2>
+<p>Wenn sich die App oder die rechtlichen Vorgaben ändern, passen wir diese Erklärung an. Es gilt die jeweils hier veröffentlichte Fassung.</p>
+
+<footer>
+  <a href="datenschutz.html">Datenschutz</a> · <a href="impressum.html">Impressum</a> ·
+  <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a> · <a href="support.html">Support</a>
+</footer>
+</main>
+</body>
+</html>
