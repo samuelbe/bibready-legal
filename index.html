@@ -32,7 +32,8 @@
   .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
   section { padding: 56px 0; }
   h1 { font-size: 48px; line-height: 1.07; margin: 0 0 16px; letter-spacing: -.02em; }
-  h1 span { color: var(--brand); }
+  h1 .l { display: block; white-space: nowrap; }
+  h1 .hl { display: block; color: var(--brand); }
   h2 { font-size: 29px; line-height: 1.15; margin: 0 0 14px; letter-spacing: -.01em; }
   .eyebrow { margin: 0 0 8px; font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--brand); }
 
@@ -122,7 +123,7 @@
   <div class="hgrid">
     <div>
       <p class="eyebrow">Pflichtausrüstung für Trail- und Ultrarennen</p>
-      <h1>Deine Ausrüstung. Die Pflichtliste. <span>Automatisch abgeglichen.</span></h1>
+      <h1><span class="l">Deine Ausrüstung.</span> <span class="l">Die Pflichtliste.</span> <span class="hl">Automatisch abgeglichen.</span></h1>
       <p class="lead">Wähle dein Rennen, und BibReady sagt dir, was du schon hast und was dir noch fehlt.</p>
       <ul class="checks">
         <li>Pflichtlisten geprüfter Rennen, für jede Distanz</li>
