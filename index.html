@@ -3,24 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BibReady – Startklar für jedes Rennen</title>
-<meta name="description" content="BibReady gleicht die Pflichtausrüstung deines Trail- oder Ultrarennens mit deiner eigenen Ausrüstung ab. Rennen wählen, abgleichen, packen.">
-<meta property="og:title" content="BibReady – Startklar für jedes Rennen">
-<meta property="og:description" content="Rennen wählen, Pflichtausrüstung mit deiner eigenen Ausrüstung abgleichen, packen. Für Trail- und Ultrarennen.">
+<title>BibReady – Pflichtausrüstung automatisch abgeglichen</title>
+<meta name="description" content="BibReady gleicht die Pflichtausrüstung deines Trail- oder Ultrarennens automatisch mit deiner eigenen Ausrüstung ab und sagt dir, was noch fehlt.">
+<meta property="og:title" content="BibReady – Pflichtausrüstung automatisch abgeglichen">
+<meta property="og:description" content="Wähle dein Rennen, und BibReady sagt dir, was du schon hast und was dir noch fehlt. Für Trail- und Ultrarennen.">
 <meta property="og:image" content="https://bibready.app/img/apple-touch-icon.png">
 <meta name="theme-color" content="#F2552C">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<!-- Design „W2 · Orange Bühne“ (Vorschau: design/website-vorschau.html im App-Repo) -->
+<!-- Design „V2 · Vorher/Nachher“ (Vorschau: design/website-kernbotschaft-vorschau.html im App-Repo) -->
 <style>
   :root {
-    --text: #1c1c1e; --muted: #6e6e73; --bg: #ffffff; --soft: #f5f5f7; --line: #ececf0;
-    --brand: #F2552C; --brand-soft: #FDE7E0; --steps: #FFF4EF; --navy: #1B1F3B; --card: #ffffff;
+    --text: #1c1c1e; --muted: #6e6e73; --body: #3a3a3c; --bg: #ffffff; --soft: #f5f5f7; --line: #ececf0;
+    --brand: #F2552C; --brand-soft: #FDE7E0; --navy: #1B1F3B; --card: #ffffff; --badge-bg: #1B1F3B; --badge-text: #ffffff;
+    --with-bg: #1B1F3B; --with-text: #c9cde6; --amber: #C27A00;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --text: #f2f2f7; --muted: #a1a1a6; --bg: #000000; --soft: #1c1c1e; --line: #2c2c2e;
-      --brand: #FF6B3D; --brand-soft: #3a1d14; --steps: #140c09; --card: #1c1c1e;
+      --text: #f2f2f7; --muted: #a1a1a6; --body: #d1d1d6; --bg: #000000; --soft: #1c1c1e; --line: #2c2c2e;
+      --brand: #FF6B3D; --brand-soft: #3a1d14; --card: #1c1c1e; --badge-bg: #ffffff; --badge-text: #1B1F3B;
+      --with-bg: #1B1F3B; --with-text: #c9cde6; --amber: #E0A030;
     }
   }
   * { box-sizing: border-box; }
@@ -28,77 +30,69 @@
          font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   a { color: inherit; }
   .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-  section { padding: 48px 0; }
-  h1 { font-size: 46px; line-height: 1.08; margin: 0 0 14px; letter-spacing: -.02em; }
-  h2 { font-size: 27px; margin: 0 0 22px; }
+  section { padding: 56px 0; }
+  h1 { font-size: 48px; line-height: 1.07; margin: 0 0 16px; letter-spacing: -.02em; }
+  h1 span { color: var(--brand); }
+  h2 { font-size: 29px; line-height: 1.15; margin: 0 0 14px; letter-spacing: -.01em; }
+  .eyebrow { margin: 0 0 8px; font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--brand); }
+
+  header.top { display: flex; align-items: center; gap: 10px; padding: 18px 0; }
+  header.top img { width: 34px; height: 34px; border-radius: 8px; }
+  header.top b { font-size: 18px; }
 
   /* Kopfbereich */
-  .hero { background: linear-gradient(135deg, #FF7A3D, #F0383B); color: #fff; padding: 0 0 60px; }
-  .hero header { display: flex; align-items: center; gap: 10px; padding: 18px 0; }
-  .hero header img { width: 34px; height: 34px; border-radius: 8px; }
-  .hero header b { font-size: 18px; }
-  .hcenter { text-align: center; max-width: 660px; margin: 0 auto; }
-  .hlogo { width: 160px; height: auto; margin: 10px 0 20px; }
-  .lead { font-size: 19px; margin: 0 0 24px; opacity: .96; }
+  .hgrid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 20px; align-items: center; padding: 16px 0 56px; }
+  .lead { font-size: 19px; color: var(--body); margin: 0 0 18px; }
+  .checks { list-style: none; padding: 0; margin: 0 0 26px; }
+  .checks li { display: flex; gap: 10px; align-items: flex-start; padding: 5px 0; }
+  .checks li::before { content: "✓"; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--brand-soft);
+                       color: var(--brand); font-weight: 800; font-size: 13px; display: flex; align-items: center;
+                       justify-content: center; margin-top: 2px; }
   .badge { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px;
-           font-weight: 600; font-size: 15px; background: #fff; color: var(--navy); }
+           font-weight: 600; font-size: 15px; background: var(--badge-bg); color: var(--badge-text); }
 
-  /* Handy + Vorteile */
-  .split { display: grid; grid-template-columns: .8fr 1.2fr; gap: 34px; align-items: center; }
-  /* iPhone im Stil eines aktuellen Pro-Modells: dünner Titanrahmen, schmale Ränder, Dynamic Island, Seitentasten */
-  .phone { position: relative; justify-self: center; width: 272px; aspect-ratio: 9 / 19.5; border-radius: 52px; padding: 4px;
-           background: linear-gradient(145deg, #d9d6d0, #8e8b86 35%, #c9c6c0 60%, #77746f);
-           box-shadow: 0 30px 60px rgba(0,0,0,.28), 0 8px 18px rgba(0,0,0,.16); }
-  .phone::before, .phone::after { content: ""; position: absolute; width: 3px; border-radius: 2px; background: #8e8b86; }
-  .phone::before { left: -3px; top: 21%; height: 7%; box-shadow: 0 38px 0 #8e8b86, 0 76px 0 #8e8b86; }
-  .phone::after { right: -3px; top: 28%; height: 12%; }
-  .bezel { height: 100%; border-radius: 48px; padding: 7px; background: #0b0b0c; }
-  .scr { position: relative; height: 100%; overflow: hidden; background: #f2f2f7; border-radius: 41px;
-         padding: 52px 13px 18px; color: #1c1c1e; font-size: 12.5px; }
-  .island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 74px; height: 22px;
-            border-radius: 14px; background: #000; }
-  .status { position: absolute; top: 14px; left: 24px; right: 18px; display: flex; justify-content: space-between;
-            align-items: center; font-size: 12.5px; font-weight: 600; letter-spacing: -.01em; }
-  .status .r { display: flex; gap: 5px; align-items: center; }
-  .navbar { display: flex; align-items: center; gap: 3px; color: #1B1F3B; font-size: 13px; margin: 0 0 8px -2px; }
-  .homebar { position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%); width: 96px; height: 4px;
-             border-radius: 3px; background: #1c1c1e; opacity: .85; }
-  .s-title { font-weight: 700; font-size: 15px; } .s-sub { color: #8e8e93; font-size: 11.5px; margin-bottom: 10px; }
-  .s-card { background: #fff; border-radius: 12px; padding: 10px; display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
-  .s-mut { color: #8e8e93; font-size: 11.5px; }
-  .s-list { background: #fff; border-radius: 12px; padding: 2px 10px; }
-  .s-row { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-top: 1px solid #eee; }
-  .s-row:first-child { border-top: 0; }
-  .s-row i { width: 13px; height: 13px; border-radius: 50%; flex: none; }
-  .s-row i.ok { background: #34C759; } .s-row i.no { border: 1.6px solid #C27A00; }
-  .s-row span { margin-left: auto; font-weight: 600; font-size: 11px; }
-  .s-row .g { color: #248A3D; } .s-row .a { color: #C27A00; }
-  .feats { display: grid; gap: 14px; }
-  .f { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px;
-       display: grid; grid-template-columns: auto 1fr; column-gap: 14px; }
-  .fi { grid-row: span 2; width: 40px; height: 40px; border-radius: 11px; display: flex; align-items: center;
-        justify-content: center; font-size: 19px; font-weight: 700; background: var(--brand-soft); color: var(--brand); }
-  .f h3 { margin: 0 0 4px; font-size: 17px; } .f p { margin: 0; font-size: 15px; color: var(--muted); }
+  /* Echte Bildschirmfotos im iPhone-Rahmen */
+  .ph { position: relative; width: 262px; border-radius: 50px; padding: 7px; background: #0b0b0c;
+        box-shadow: 0 0 0 2px #9a978f, 0 30px 60px rgba(0,0,0,.28), 0 8px 18px rgba(0,0,0,.16); }
+  .ph img { display: block; width: 100%; height: auto; aspect-ratio: 1320 / 2868; border-radius: 43px; }
+  .ph.sm { width: 220px; border-radius: 42px; padding: 6px; }
+  .ph.sm img { border-radius: 36px; }
+  .duo { position: relative; height: 570px; }
+  .duo .back { position: absolute; right: 0; top: 40px; width: 236px; transform: rotate(5deg); }
+  .duo .front { position: absolute; left: 10px; top: 0; z-index: 2; }
 
-  /* So geht's */
-  .steps { background: var(--steps); }
-  .claim { margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand); }
-  .sts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .st span { display: inline-flex; width: 32px; height: 32px; border-radius: 50%; align-items: center; justify-content: center;
-             font-weight: 700; margin-bottom: 8px; background: var(--brand); color: #fff; }
-  .st b { display: block; } .st p { margin: 4px 0 0; font-size: 15px; color: var(--muted); }
+  /* Bisher / Mit BibReady */
+  .soft { background: var(--soft); }
+  .center { text-align: center; }
+  .contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
+  .contrast > div { border-radius: 18px; padding: 24px; }
+  .without { background: var(--card); border: 1px solid var(--line); }
+  .without ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+  .with { background: var(--with-bg); color: #fff; }
+  .with .msg { margin-top: 12px; background: #fff; color: #1c1c1e; border-radius: 14px; padding: 14px 16px; }
+  .with .msg b { display: block; font-size: 17px; }
+  .with .msg span { color: #C27A00; font-size: 14.5px; }
+  .with p { margin: 12px 0 0; color: var(--with-text); font-size: 15px; }
+
+  /* Schritte im Zickzack */
+  .zig { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 56px; }
+  .zig:last-child { margin-bottom: 0; }
+  .zig.rev .txt { order: 2; }
+  .zig p { color: var(--muted); margin: 0; }
+  .crop { justify-self: center; height: 420px; overflow: hidden;
+          -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
+  .num { display: inline-flex; width: 28px; height: 28px; border-radius: 50%; align-items: center; justify-content: center;
+         font-weight: 700; font-size: 14px; background: var(--brand); color: #fff; margin-bottom: 6px; }
 
   /* Pro */
-  .pro { display: flex; gap: 24px; align-items: center; justify-content: space-between; border-radius: 20px;
-         padding: 28px; background: var(--soft); }
+  .pro { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; border-radius: 20px; padding: 30px; background: var(--soft); }
   .tag { font-size: 11px; font-weight: 800; color: #fff; background: var(--brand); padding: 3px 8px; border-radius: 99px; }
-  .pro h3 { margin: 8px 0 4px; font-size: 23px; } .pro > div > p { margin: 0; max-width: 580px; }
-  .wx { display: flex; gap: 14px; align-items: flex-start; background: var(--card); border: 1.5px solid #FBD3C5;
-        border-radius: 14px; padding: 14px 16px; margin: 12px 0; }
-  .wxi { font-size: 28px; line-height: 1; } .wx b { font-size: 16px; } .wx p { margin: 4px 0 8px; font-size: 15px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pro h3 { margin: 8px 0 6px; font-size: 23px; }
+  .pro p { margin: 0 0 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
   .chips span { font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 99px; }
   .c-need { background: #FDE7E0; color: #C7361A; } .c-maybe { background: #FFF4DC; color: #9A6200; } .c-no { background: #E9F6EC; color: #248A3D; }
+  .free { color: var(--muted); margin: 0 !important; }
   .price { text-align: right; white-space: nowrap; } .price b { display: block; font-size: 30px; }
   .price span { font-size: 13px; color: var(--muted); }
 
@@ -108,91 +102,91 @@
   footer a { color: var(--muted); text-decoration: none; } footer a:hover { color: var(--text); }
 
   @media (max-width: 760px) {
-    h1 { font-size: 34px; } .split { grid-template-columns: 1fr; } .sts { grid-template-columns: 1fr; }
-    .pro { flex-direction: column; align-items: flex-start; } .price { text-align: left; }
+    h1 { font-size: 36px; } h2 { font-size: 24px; } section { padding: 44px 0; }
+    .hgrid, .contrast, .zig, .pro { grid-template-columns: 1fr; }
+    .hgrid { padding-bottom: 40px; }
+    .duo { height: auto; display: flex; justify-content: center; }
+    .duo .back { display: none; }
+    .duo .front { position: static; width: 240px; }
+    .zig { gap: 20px; }
+    .zig.rev .txt { order: 0; }
+    .crop { height: 360px; }
+    .price { text-align: left; }
   }
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="wrap">
-    <header><img src="img/icon.png" alt=""><b>BibReady</b></header>
-    <div class="hcenter">
-      <img class="hlogo" src="img/logo-hero.png" alt="BibReady">
-      <h1>Startklar für jedes Rennen.</h1>
-      <p class="lead">Rennen wählen, Pflichtausrüstung mit deiner eigenen Ausrüstung abgleichen, packen. Für Trail- und Ultrarennen.</p>
+<div class="wrap">
+  <header class="top"><img src="img/icon.png" alt=""><b>BibReady</b></header>
+  <div class="hgrid">
+    <div>
+      <p class="eyebrow">Pflichtausrüstung für Trail- und Ultrarennen</p>
+      <h1>Deine Ausrüstung. Die Pflichtliste. <span>Automatisch abgeglichen.</span></h1>
+      <p class="lead">Wähle dein Rennen, und BibReady sagt dir, was du schon hast und was dir noch fehlt.</p>
+      <ul class="checks">
+        <li>Pflichtlisten geprüfter Rennen, für jede Distanz</li>
+        <li>Deine Ausrüstung einmal erfassen, für alle Rennen nutzen</li>
+        <li>Fehlende Teile mit Namen, nicht nur als Zahl</li>
+      </ul>
       <span class="badge">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.6 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.2 5.8c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
         Bald im App Store
       </span>
     </div>
+    <div class="duo">
+      <div class="ph back"><img src="img/screens/01-packliste.jpg" width="640" height="1390" alt="Packliste in BibReady: Es fehlen 2 Pflichtteile, Warme Zusatzkleidung und Notfallpfeife"></div>
+      <div class="ph front"><img src="img/screens/02-start.jpg" width="640" height="1390" alt="Startseite von BibReady: nächstes Rennen mit 13 von 15 Pflichtteilen, es fehlen 2 Pflichtteile"></div>
+    </div>
   </div>
 </div>
 
-<section>
-  <div class="wrap split">
-    <div class="phone" role="img" aria-label="Packliste in der App: Zugspitz Ultratrail by UTMB, ZUT100, 14 von 16 Pflichtteilen vorhanden">
-      <div class="bezel"><div class="scr">
-        <div class="island"></div>
-        <div class="status"><span>9:41</span><span class="r">
-          <svg width="16" height="10" viewBox="0 0 16 10" aria-hidden="true"><rect x="0" y="7" width="3" height="3" rx=".7"/><rect x="4.3" y="5" width="3" height="5" rx=".7"/><rect x="8.6" y="2.5" width="3" height="7.5" rx=".7"/><rect x="12.9" y="0" width="3" height="10" rx=".7"/></svg>
-          <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true"><path d="M7 2.2c1.9 0 3.6.7 4.9 1.9l1-1C11.4 1.6 9.3.8 7 .8S2.6 1.6 1.1 3.1l1 1C3.4 2.9 5.1 2.2 7 2.2zm0 2.9c1.1 0 2.1.4 2.9 1.1l1-1C9.8 4.2 8.5 3.7 7 3.7s-2.8.5-3.9 1.5l1 1c.8-.7 1.8-1.1 2.9-1.1zM7 8l1.6-1.5C8.2 6.2 7.6 6 7 6s-1.2.2-1.6.5z"/></svg>
-          <svg width="25" height="11" viewBox="0 0 25 11" aria-hidden="true"><rect x=".5" y=".5" width="21" height="10" rx="3" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="16" height="7" rx="1.8"/><rect x="22.6" y="3.6" width="1.6" height="3.8" rx=".8" opacity=".45"/></svg>
-        </span></div>
-        <div class="navbar"><svg width="9" height="14" viewBox="0 0 9 14" aria-hidden="true"><path d="M7.5 1.5 2 7l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Rennen</div>
-        <div class="s-title">Zugspitz Ultratrail by UTMB</div>
-        <div class="s-sub">ZUT100, 167 km, 8.205 Hm</div>
-        <div class="s-card">
-          <svg width="54" height="54" viewBox="0 0 46 46" aria-hidden="true">
-            <circle cx="23" cy="23" r="19" fill="none" stroke="#e5e5ea" stroke-width="5"/>
-            <circle cx="23" cy="23" r="19" fill="none" stroke="#F2552C" stroke-width="5" stroke-linecap="round" stroke-dasharray="104.5 120" transform="rotate(-90 23 23)"/>
-            <text x="23" y="27" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1c1c1e">14/16</text>
-          </svg>
-          <div><b>Es fehlen 2 Teile</b><div class="s-mut">11 von 16 gepackt</div></div>
-        </div>
-        <div class="s-list">
-          <div class="s-row"><i class="ok"></i>Wasserdichte Jacke<span class="g">gepackt</span></div>
-          <div class="s-row"><i class="ok"></i>Zwei Stirnlampen<span class="g">gepackt</span></div>
-          <div class="s-row"><i class="no"></i>Rettungsdecke<span class="a">fehlt</span></div>
-          <div class="s-row"><i class="ok"></i>Erste-Hilfe-Set<span class="g">gepackt</span></div>
-          <div class="s-row"><i class="no"></i>Handschuhe<span class="a">fehlt</span></div>
-          <div class="s-row"><i class="ok"></i>Notfallpfeife<span class="g">gepackt</span></div>
-          <div class="s-row"><i class="ok"></i>Trinkbecher<span class="g">gepackt</span></div>
-          <div class="s-row"><i class="ok"></i>Mütze oder Buff<span class="g">gepackt</span></div>
-        </div>
-        <div class="homebar"></div>
-      </div></div>
-    </div>
-    <div class="feats">
-      <div class="f"><div class="fi">✓</div><h3>Pflichtlisten aus dem Katalog</h3><p>Unser Katalog enthält geprüfte Trail- und Ultrarennen mit allen Distanzen und ihren Pflichtlisten. Rennen und Distanz wählen, fertig.</p></div>
-      <div class="f"><div class="fi">⇄</div><h3>Abgleich mit deiner Ausrüstung</h3><p>BibReady zeigt dir sofort, was du hast und was fehlt: „14 von 16 – es fehlen …“.</p></div>
-      <div class="f"><div class="fi">☁</div><h3>Packen, abhaken, offline</h3><p>Packliste mit Gewicht abhaken, auch ohne Empfang bei der Startnummernausgabe.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="steps">
+<section class="soft">
   <div class="wrap">
-    <p class="claim">Pflichtausrüstung im Griff.</p>
-    <h2>In drei Schritten startklar</h2>
-    <div class="sts">
-      <div class="st"><span>1</span><b>Rennen wählen</b><p>Im Katalog suchen oder eigenes Rennen anlegen.</p></div>
-      <div class="st"><span>2</span><b>Ausrüstung erfassen</b><p>Typische Teile mit einem Tipp übernehmen.</p></div>
-      <div class="st"><span>3</span><b>Startklar packen</b><p>Fehlendes besorgen, alles abhaken.</p></div>
+    <h2 class="center">Schluss mit Reglement neben dem Rucksack</h2>
+    <div class="contrast">
+      <div class="without"><b>Bisher</b>
+        <ul><li>Reglement-PDF suchen und lesen</li><li>Pflichtliste abtippen oder ausdrucken</li><li>Rucksack ausräumen und vergleichen</li><li>Bei jedem Rennen von vorn</li></ul></div>
+      <div class="with"><b>Mit BibReady</b>
+        <div class="msg"><b>Es fehlen 2 Pflichtteile</b><span>Warme Zusatzkleidung, Notfallpfeife</span></div>
+        <p>Rennen wählen, fertig. Der Abgleich läuft automatisch, auch wenn du neue Ausrüstung kaufst.</p></div>
     </div>
   </div>
 </section>
 
 <section>
+  <div class="wrap">
+    <div class="zig">
+      <div class="txt"><span class="num">1</span><h2>Rennen wählen</h2><p>Der Katalog enthält geprüfte Trail- und Ultrarennen mit allen
+        Distanzen und ihren Pflichtlisten. Nicht dabei? Dann legst du dein Rennen selbst an.</p></div>
+      <div class="crop"><div class="ph sm"><img src="img/screens/03-katalog.jpg" width="640" height="1390" loading="lazy" alt="Rennkatalog in BibReady, nach Monaten sortiert"></div></div>
+    </div>
+    <div class="zig rev">
+      <div class="txt"><span class="num">2</span><h2>Ausrüstung einmal erfassen</h2><p>Jacke, Stirnlampe, Weste: mit Gewicht und Kategorie.
+        BibReady ordnet deine Teile den Pflichtteilen jedes Rennens zu.</p></div>
+      <div class="crop"><div class="ph sm"><img src="img/screens/05-ausruestung.jpg" width="640" height="1390" loading="lazy" alt="Ausrüstung in BibReady nach Kategorien mit Gewicht"></div></div>
+    </div>
+    <div class="zig">
+      <div class="txt"><span class="num">3</span><h2>Sehen, was fehlt</h2><p>Ein Tipp auf „Fehlt“, und du hast deine Einkaufsliste.
+        Am Renntag abhaken, auch ohne Empfang bei der Startnummernausgabe.</p></div>
+      <div class="crop"><div class="ph sm"><img src="img/screens/07-packliste-fehlt.jpg" width="640" height="1390" loading="lazy" alt="Packliste in BibReady, gefiltert auf fehlende Teile"></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
   <div class="wrap">
     <div class="pro">
       <div>
         <span class="tag">PRO</span>
-        <h3>BibReady Pro</h3>
-        <p>Unbegrenzte Anzahl an Rennen, Wetter-Check für deinen Renntag, PDF-Export für deine Crew und der Rennvergleich mit Einkaufsliste. Die Pflichtlisten bleiben immer kostenlos.</p>
+        <h3>Wetter-Check für deinen Renntag</h3>
+        <p>BibReady liest die Vorhersage und sagt dir, welche wetterabhängigen Pflichtteile du ziemlich sicher brauchst und welche
+           wahrscheinlich nicht.</p>
+        <div class="chips"><span class="c-need">Regenhose: sehr wahrscheinlich nötig</span><span class="c-maybe">Handschuhe: eher nötig</span><span class="c-no">Sonnenbrille: eher nicht</span></div>
+        <p>Außerdem: unbegrenzt viele Rennen, PDF-Export für deine Crew und der Rennvergleich mit Einkaufsliste.</p>
+        <p class="free">Kostenlos: alle Pflichtlisten und der Abgleich für bis zu 3 anstehende Rennen.</p>
       </div>
-      <div class="price"><b>19,99 €</b><span>pro Jahr, 7 Tage gratis testen</span></div>
+      <div class="price"><b>19,99 €</b><span>pro Jahr<br>7 Tage gratis testen</span></div>
     </div>
   </div>
 </section>
