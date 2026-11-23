@@ -90,9 +90,6 @@
   .tag { font-size: 11px; font-weight: 800; color: #fff; background: var(--brand); padding: 3px 8px; border-radius: 99px; }
   .pro h3 { margin: 8px 0 6px; font-size: 23px; }
   .pro p { margin: 0 0 10px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
-  .chips span { font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 99px; }
-  .c-need { background: #FDE7E0; color: #C7361A; } .c-maybe { background: #FFF4DC; color: #9A6200; } .c-no { background: #E9F6EC; color: #248A3D; }
   .free { color: var(--muted); margin: 0 !important; }
   .price { text-align: right; white-space: nowrap; } .price b { display: block; font-size: 30px; }
   .price span { font-size: 13px; color: var(--muted); }
@@ -106,6 +103,7 @@
     h1 { font-size: 36px; } h2 { font-size: 24px; } section { padding: 44px 0; }
     .hgrid, .contrast, .zig, .pro { grid-template-columns: 1fr; }
     .hgrid { padding-bottom: 40px; }
+    .badge { display: flex; width: fit-content; margin: 0 auto; }
     .duo { height: auto; display: flex; justify-content: center; }
     .duo .back { display: none; }
     .duo .front { position: static; width: 240px; }
@@ -180,11 +178,10 @@
     <div class="pro">
       <div>
         <span class="tag">PRO</span>
-        <h3>Wetter-Check für deinen Renntag</h3>
-        <p>BibReady liest die Vorhersage und sagt dir, welche wetterabhängigen Pflichtteile du ziemlich sicher brauchst und welche
-           wahrscheinlich nicht.</p>
-        <div class="chips"><span class="c-need">Regenhose: sehr wahrscheinlich nötig</span><span class="c-maybe">Handschuhe: eher nötig</span><span class="c-no">Sonnenbrille: eher nicht</span></div>
-        <p>Außerdem: unbegrenzt viele Rennen, PDF-Export für deine Crew und der Rennvergleich mit Einkaufsliste.</p>
+        <h3>BibReady Pro</h3>
+        <p>Mit Pro bekommst du einen Wetter-Check für deinen Renntag, der zeigt, welche wetterabhängigen Pflichtteile du
+           wahrscheinlich brauchst. Dazu unbegrenzt viele Rennen, PDF-Export für deine Crew und den Rennvergleich mit
+           Einkaufsliste.</p>
         <p class="free">Kostenlos: alle Pflichtlisten und der Abgleich für bis zu 3 anstehende Rennen.</p>
       </div>
       <div class="price"><b>19,99 €</b><span>pro Jahr<br>7 Tage gratis testen</span></div>
