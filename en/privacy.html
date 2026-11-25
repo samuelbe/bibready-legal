@@ -61,10 +61,10 @@ Email: support@bibready.app</p>
 <p>To use the app, you create an account with an email address and a password. The password is only stored in encrypted form (as a hash). We use your email address for signing in and for emails concerning your account (e.g. confirming or resetting your password). So that these emails reach you in your language, we store the language of the app (German or English) with your account.</p>
 <p><strong>Sign in with Apple:</strong> Alternatively, you can sign in with your Apple ID (“Continue with Apple”). Apple (Apple Distribution International Ltd., Ireland) then confirms your identity and sends us a user identifier, your email address and, on first sign-in and if you choose, your name. With Apple you can choose to hide your email address; we then receive an anonymous relay address from Apple. We store the name as the display name in your profile. No password is created with this sign-in method. So that we can revoke your Apple sign-in with Apple when you delete your account, we store an access token issued by Apple on our server for this purpose; it is deleted together with your account.</p>
 <p>The sign-in emails (confirming your email address, resetting your password, notice of a password change) are created by the Supabase authentication service (see section 9) and sent via the email service <strong>Resend</strong> (Resend, Inc., USA; sent via servers in Ireland, EU). This involves processing your email address, the content of the email and technical delivery data (e.g. time, delivery status). We have a data processing agreement with Resend (Art. 28 GDPR); where data is transferred to the USA, this is based on the EU Standard Contractual Clauses (Art. 46 GDPR). Legal basis: Art. 6(1)(b) GDPR (providing your account).</p>
-<p>Legal basis: Art. 6(1)(b) GDPR (providing the app under the user agreement).</p>
+<p>Legal basis for account and sign-in: Art. 6(1)(b) GDPR (providing the app under the user agreement). We need your email address (or the sign-in with Apple) to provide you with an account; without it you cannot use the app. All other information, such as a display name, weights or profile links, is optional.</p>
 
 <h2>4. Your content in the app</h2>
-<p>We store what you create in the app: gear items (name, category, weight), your races and distances, races you create privately together with their gear list, and your checklists (assignments and check-offs). This data is visible only to you.</p>
+<p>We store what you create in the app: gear items (name, category, weight), your races and distances, races you create privately together with their gear list, and your checklists (assignments and check-offs). This data is not visible to other users.</p>
 <p>In your profile, you can voluntarily add a display name and links to your public runner profiles on ITRA (itra.run) and UTMB (utmb.world). We only store the link itself and do not retrieve any data from these sites. If you tap the link, the respective site opens in your browser; the privacy policy of the respective provider applies there. The statistics in your profile (e.g. races completed, kilometers, season overview) are calculated only from your own races in the app.</p>
 <p>The shared race catalog contains only information published by the organizers (races, distances, mandatory gear) and no personal data. Races you create yourself are not added to the catalog.</p>
 <p>Legal basis: Art. 6(1)(b) GDPR.</p>
@@ -81,7 +81,7 @@ Email: support@bibready.app</p>
   <li>The page content or your text is sent for analysis to <strong>Anthropic PBC</strong>, 548 Market Street, PMB 90375, San Francisco, CA 94104, USA. Anthropic returns a structured gear list. If the gear list is on a linked subpage, Anthropic may retrieve further public pages of the organizer for this purpose.</li>
   <li><strong>No</strong> account data is sent to Anthropic (no email address, no user identifier). Please do not paste any personal information into “Paste Text”.</li>
   <li>Under Anthropic’s terms, content submitted via the API is not used to train AI models.</li>
-  <li>The transfer to the USA is based on appropriate safeguards under Art. 46 GDPR (EU Standard Contractual Clauses) or on an adequacy decision, insofar as the provider is certified.</li>
+  <li>Anthropic processes the content as a processor (Art. 28 GDPR). There is no adequacy decision covering Anthropic in the USA; the transfer is based on the EU Standard Contractual Clauses (Art. 46(2)(c) GDPR), which are part of the data processing agreement with Anthropic.</li>
 </ul>
 <p>To prevent misuse of this feature, we store the time and the type (link or text) of each analysis with your account and limit the number (currently 5 per day and 20 in 30 days).</p>
 <p>Legal basis: Art. 6(1)(b) GDPR (a feature you requested); for the limit, Art. 6(1)(f) GDPR (legitimate interest in protection against misuse).</p>
@@ -98,19 +98,34 @@ Email: support@bibready.app</p>
 <p>For the Weather Check (BibReady Pro), the app uses the start coordinates stored in the catalog for races from the catalog. For races you create yourself, it determines the coordinates from the location you entered using Apple’s map service; it also uses this service to determine the time zone of the start location. With the coordinates and the race date, the app requests weather data from the <strong>Apple Weather</strong> service (WeatherKit) of Apple Distribution International Ltd., Ireland. Only the race location and the date are transmitted, not your location and no account data; according to Apple, it does not use the requests to identify you. The results are stored on your device for a few hours. Legal basis: Art. 6(1)(b) GDPR (providing the feature).</p>
 
 <h2>9. Hosting and servers</h2>
-<p>The app uses <strong>Supabase</strong> (Supabase Inc., USA) for sign-in, database and server functions. The data is stored in a data center in Frankfurt am Main (EU). We have a data processing agreement with Supabase (Art. 28 GDPR). When the server is accessed, technically necessary data such as IP address and time is processed in server logs to ensure operation and security (Art. 6(1)(f) GDPR).</p>
+<p>The app uses <strong>Supabase</strong> (Supabase Inc., USA) for sign-in, database and server functions. The data is stored in a data center in Frankfurt am Main (EU). We have a data processing agreement with Supabase (Art. 28 GDPR). As Supabase is a US company, access from the USA (for example for maintenance and support) cannot be ruled out; the EU Standard Contractual Clauses (Art. 46(2)(c) GDPR) apply to this. When the server is accessed, technically necessary data such as IP address and time is processed in server logs to ensure operation and security (Art. 6(1)(f) GDPR).</p>
 
 <h3>Website bibready.app</h3>
 <p>This website (bibready.app with legal notice, privacy policy, terms of use and support) is provided via <strong>GitHub Pages</strong> (GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA). When you visit it, GitHub processes technically necessary data such as IP address, time and the page visited in server logs in order to deliver the pages and protect them against attacks. GitHub is certified under the EU-U.S. Data Privacy Framework. The website does not set cookies and does not use any analytics or tracking tools. Legal basis: Art. 6(1)(f) GDPR (secure and reliable provision of the website).</p>
 
-<h2>10. Retention and deletion</h2>
-<p>We store your data for as long as you have your account. You can delete your account at any time under <em>Profile → Settings → Delete Account</em>. This permanently removes all associated data: profile, gear, races, checklists, races created privately, your error reports and the log of AI analyses.</p>
+<h2>10. Contacting us by email</h2>
+<p>If you send us an email (e.g. to support@bibready.app), we process your email address, your name (if provided) and the content of your message in order to answer your request. The same applies to the emails about reports from “Report an error” (see section 5). Our mailbox is operated by IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, Germany; we have a data processing agreement with IONOS (Art. 28 GDPR). Legal basis: Art. 6(1)(b) GDPR where your request concerns the use of the app, otherwise Art. 6(1)(f) GDPR (legitimate interest in answering requests).</p>
 
-<h2>11. Your rights</h2>
-<p>You have the right of access (Art. 15 GDPR), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20) and to object to processing based on legitimate interests (Art. 21). Just write to us at the email address above.</p>
+<h2>11. Retention and deletion</h2>
+<p>We store your data for as long as you have your account. You can delete your account at any time under <em>Profile → Settings → Delete Account</em>. This permanently removes all associated data: profile, gear, races, checklists, races created privately, your error reports and the log of AI analyses.</p>
+<p>In addition:</p>
+<ul>
+  <li><strong>Backups:</strong> To protect against data loss, we regularly create encrypted backups of the database. They are deleted after 30 days at the latest. Data you delete is therefore also removed from the backups after 30 days at the latest.</li>
+  <li><strong>Server logs</strong> (Supabase, GitHub) are deleted automatically by the providers after a short period.</li>
+  <li><strong>Email delivery data</strong> at Resend is deleted automatically according to the provider’s retention periods.</li>
+  <li><strong>Email requests</strong> are deleted once they have been dealt with and no further questions are expected, after two years at the latest, unless statutory retention obligations apply.</li>
+  <li><strong>Data on your device</strong> (see section 8) is removed when you sign out or delete the app.</li>
+</ul>
+
+<h2>12. Your rights</h2>
+<p>You have the right of access (Art. 15 GDPR), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18) and data portability (Art. 20). Just write to us at the email address above.</p>
+<p><strong>Right to object (Art. 21 GDPR):</strong> Where we process data on the basis of legitimate interests (Art. 6(1)(f) GDPR), you may object to this processing at any time on grounds relating to your particular situation. We will then no longer process the data unless we can demonstrate compelling legitimate grounds that override your interests, or the processing serves the establishment, exercise or defence of legal claims.</p>
 <p>You can also lodge a complaint with a data protection supervisory authority, in particular in the EU member state of your place of residence.</p>
 
-<h2>12. Changes</h2>
+<h2>13. No automated decision-making</h2>
+<p>We do not make decisions based solely on automated processing, including profiling (Art. 22 GDPR). The AI analysis (section 6) only provides a suggestion for the gear list, which you can check and change.</p>
+
+<h2>14. Changes</h2>
 <p>If the app or the legal requirements change, we will update this policy. The version published here applies.</p>
 
 <p class="muted">In case of any discrepancy, the German version prevails.</p>
