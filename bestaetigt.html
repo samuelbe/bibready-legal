@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>BibReady – E-Mail bestätigt</title>
+<link rel="alternate" hreflang="de" href="https://bibready.app/bestaetigt.html">
+<link rel="alternate" hreflang="en" href="https://bibready.app/en/confirmed.html">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <!--
@@ -31,6 +33,11 @@
   .home { display:inline-flex; align-items:center; gap:8px; margin-bottom:28px; font-weight:700; font-size:17px;
           color:var(--text); text-decoration:none; }
   .home img { width:30px; height:30px; border-radius:7px; }
+  .top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:28px; }
+  .top .home { margin-bottom:0; }
+  .lang { display:flex; gap:10px; margin-top:5px; font-size:.9rem; color:var(--muted); }
+  .lang a { color:var(--muted); }
+  .lang span { color:var(--text); font-weight:600; }
   .card { background:var(--card); border-radius:20px; padding:28px 24px; text-align:center; }
   .badge { width:64px; height:64px; border-radius:50%; margin:0 auto 16px; display:flex; align-items:center;
            justify-content:center; background:var(--okbg); color:var(--ok); }
@@ -54,7 +61,10 @@
 </head>
 <body>
 <main>
-<a class="home" href="index.html"><img src="img/icon.png" alt="">BibReady</a>
+<div class="top">
+  <a class="home" href="index.html"><img src="img/icon.png" alt="">BibReady</a>
+  <nav class="lang" aria-label="Sprache"><span aria-current="page">Deutsch</span><a href="en/confirmed.html" hreflang="en" lang="en">English</a></nav>
+</div>
 
 <!-- Erfolg (PC, Mac oder ohne Anmeldedaten) – auch die Anzeige ohne JavaScript -->
 <section class="card state on" id="ok">

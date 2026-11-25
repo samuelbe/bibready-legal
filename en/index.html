@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BibReady – Mandatory gear, matched automatically</title>
+<meta name="description" content="BibReady automatically matches the mandatory gear of your trail or ultra race against your own gear and tells you what is still missing.">
+<meta property="og:title" content="BibReady – Mandatory gear, matched automatically">
+<meta property="og:description" content="Choose your race, and BibReady tells you what you already have and what you are still missing. For trail and ultra races.">
+<meta property="og:image" content="https://bibready.app/img/apple-touch-icon.png">
+<meta property="og:locale" content="en_US">
+<meta name="theme-color" content="#F2552C">
+<link rel="alternate" hreflang="de" href="https://bibready.app/">
+<link rel="alternate" hreflang="en" href="https://bibready.app/en/">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<!-- English version of ../index.html. Design „V2 · Vorher/Nachher“ (Vorschau: design/website-kernbotschaft-vorschau.html im App-Repo) -->
+<style>
+  :root {
+    --text: #1c1c1e; --muted: #6e6e73; --body: #3a3a3c; --bg: #ffffff; --soft: #f5f5f7; --line: #ececf0;
+    --brand: #F2552C; --brand-soft: #FDE7E0; --navy: #1B1F3B; --card: #ffffff; --badge-bg: #1B1F3B; --badge-text: #ffffff;
+    --with-bg: #1B1F3B; --with-text: #c9cde6; --amber: #C27A00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #f2f2f7; --muted: #a1a1a6; --body: #d1d1d6; --bg: #000000; --soft: #1c1c1e; --line: #2c2c2e;
+      --brand: #FF6B3D; --brand-soft: #3a1d14; --card: #1c1c1e; --badge-bg: #ffffff; --badge-text: #1B1F3B;
+      --with-bg: #1B1F3B; --with-text: #c9cde6; --amber: #E0A030;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  a { color: inherit; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 56px 0; }
+  h1 { font-size: 48px; line-height: 1.07; margin: 0 0 16px; letter-spacing: -.02em; }
+  h1 .l { display: block; white-space: nowrap; }
+  h1 .hl { display: block; color: var(--brand); }
+  h2 { font-size: 29px; line-height: 1.15; margin: 0 0 14px; letter-spacing: -.01em; }
+  .eyebrow { margin: 0 0 8px; font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--brand); }
+
+  header.top { display: flex; align-items: center; gap: 10px; padding: 18px 0; }
+  header.top img { width: 34px; height: 34px; border-radius: 8px; }
+  header.top b { font-size: 18px; }
+  header.top .lang { margin-left: auto; display: flex; gap: 10px; font-size: 14px; color: var(--muted); }
+  header.top .lang a { color: var(--muted); }
+  header.top .lang span { color: var(--text); font-weight: 600; }
+
+  /* Kopfbereich */
+  .hgrid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 20px; align-items: center; padding: 16px 0 56px; }
+  .lead { font-size: 19px; color: var(--body); margin: 0 0 18px; }
+  .checks { list-style: none; padding: 0; margin: 0 0 26px; }
+  .checks li { display: flex; gap: 10px; align-items: flex-start; padding: 5px 0; }
+  .checks li::before { content: "✓"; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--brand-soft);
+                       color: var(--brand); font-weight: 800; font-size: 13px; display: flex; align-items: center;
+                       justify-content: center; margin-top: 2px; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px;
+           font-weight: 600; font-size: 15px; background: var(--badge-bg); color: var(--badge-text); }
+
+  /* Echte Bildschirmfotos im iPhone-Rahmen */
+  .ph { position: relative; width: 262px; border-radius: 50px; padding: 7px; background: #0b0b0c;
+        box-shadow: 0 0 0 2px #9a978f, 0 30px 60px rgba(0,0,0,.28), 0 8px 18px rgba(0,0,0,.16); }
+  .ph img { display: block; width: 100%; height: auto; aspect-ratio: 1320 / 2868; border-radius: 43px; }
+  .ph.sm { width: 220px; border-radius: 42px; padding: 6px; }
+  .ph.sm img { border-radius: 36px; }
+  .duo { position: relative; height: 570px; }
+  .duo .back { position: absolute; right: 0; top: 40px; width: 236px; transform: rotate(5deg); }
+  .duo .front { position: absolute; left: 10px; top: 0; z-index: 2; }
+
+  /* Bisher / Mit BibReady */
+  .soft { background: var(--soft); }
+  .center { text-align: center; }
+  .contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
+  .contrast > div { border-radius: 18px; padding: 24px; }
+  .without { background: var(--card); border: 1px solid var(--line); }
+  .without ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+  .with { background: var(--with-bg); color: #fff; }
+  .with .msg { margin-top: 12px; background: #fff; color: #1c1c1e; border-radius: 14px; padding: 14px 16px; }
+  .with .msg b { display: block; font-size: 17px; }
+  .with .msg span { color: #C27A00; font-size: 14.5px; }
+  .with p { margin: 12px 0 0; color: var(--with-text); font-size: 15px; }
+
+  /* Schritte im Zickzack */
+  .zig { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 56px; }
+  .zig:last-child { margin-bottom: 0; }
+  .zig.rev .txt { order: 2; }
+  .zig p { color: var(--muted); margin: 0; }
+  .crop { justify-self: center; height: 420px; overflow: hidden;
+          -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
+  .num { display: inline-flex; width: 28px; height: 28px; border-radius: 50%; align-items: center; justify-content: center;
+         font-weight: 700; font-size: 14px; background: var(--brand); color: #fff; margin-bottom: 6px; }
+
+  /* Pro */
+  .pro { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; border-radius: 20px; padding: 30px; background: var(--soft); }
+  .tag { font-size: 11px; font-weight: 800; color: #fff; background: var(--brand); padding: 3px 8px; border-radius: 99px; }
+  .pro h3 { margin: 8px 0 6px; font-size: 23px; }
+  .pro p { margin: 0 0 10px; }
+  .free { color: var(--muted); margin: 0 !important; }
+  .price { text-align: right; white-space: nowrap; } .price b { display: block; font-size: 30px; }
+  .price span { font-size: 13px; color: var(--muted); }
+
+  .note { text-align: center; font-size: 13px; color: var(--muted); margin: 0; padding: 0 20px 28px; }
+  footer { border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 18px; padding-top: 22px; padding-bottom: 28px; font-size: 14px; }
+  footer a { color: var(--muted); text-decoration: none; } footer a:hover { color: var(--text); }
+
+  @media (max-width: 760px) {
+    h1 { font-size: 36px; } h2 { font-size: 24px; } section { padding: 44px 0; }
+    .hgrid, .contrast, .zig, .pro { grid-template-columns: 1fr; }
+    .hgrid { padding-bottom: 40px; }
+    .badge { display: flex; width: fit-content; margin: 0 auto; }
+    .duo { height: auto; display: flex; justify-content: center; }
+    .duo .back { display: none; }
+    .duo .front { position: static; width: 240px; }
+    .zig { gap: 20px; }
+    .zig.rev .txt { order: 0; }
+    .crop { height: 360px; }
+    .price { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top"><img src="../img/icon.png" alt=""><b>BibReady</b>
+    <nav class="lang" aria-label="Language"><a href="../index.html" hreflang="de" lang="de">Deutsch</a><span aria-current="page">English</span></nav></header>
+  <div class="hgrid">
+    <div>
+      <p class="eyebrow">Mandatory gear for trail and ultra races</p>
+      <h1><span class="l">Your gear.</span> <span class="l">The mandatory list.</span> <span class="hl">Matched automatically.</span></h1>
+      <p class="lead">Choose your race, and BibReady tells you what you already have and what you’re still missing.</p>
+      <ul class="checks">
+        <li>Mandatory gear lists of verified races, for every distance</li>
+        <li>Record your gear once, use it for every race</li>
+        <li>Missing items by name, not just as a number</li>
+      </ul>
+      <span class="badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.6 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.2 5.8c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
+        Coming soon to the App Store
+      </span>
+    </div>
+    <div class="duo">
+      <div class="ph back"><img src="../img/screens/01-packliste.jpg" width="640" height="1390" alt="Packing list in BibReady: 2 mandatory items missing, warm extra clothing and emergency whistle"></div>
+      <div class="ph front"><img src="../img/screens/02-start.jpg" width="640" height="1390" alt="BibReady home screen: next race with 13 of 15 mandatory items, 2 mandatory items missing"></div>
+    </div>
+  </div>
+</div>
+
+<section class="soft">
+  <div class="wrap">
+    <h2 class="center">No more race rules next to your pack</h2>
+    <div class="contrast">
+      <div class="without"><b>Until now</b>
+        <ul><li>Find and read the rules PDF</li><li>Type up or print the mandatory list</li><li>Empty your pack and compare</li><li>Start over for every race</li></ul></div>
+      <div class="with"><b>With BibReady</b>
+        <div class="msg"><b>2 mandatory items missing</b><span>Warm extra clothing, emergency whistle</span></div>
+        <p>Choose your race, done. Matching runs automatically, even when you buy new gear.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="zig">
+      <div class="txt"><span class="num">1</span><h2>Choose your race</h2><p>The catalog contains verified trail and ultra races with all
+        distances and their mandatory gear lists. Not listed? Then create your race yourself.</p></div>
+      <div class="crop"><div class="ph sm"><img src="../img/screens/03-katalog.jpg" width="640" height="1390" loading="lazy" alt="Race catalog in BibReady, sorted by month"></div></div>
+    </div>
+    <div class="zig rev">
+      <div class="txt"><span class="num">2</span><h2>Record your gear once</h2><p>Jacket, headlamp, vest: with weight and category.
+        BibReady matches your items to the mandatory items of every race.</p></div>
+      <div class="crop"><div class="ph sm"><img src="../img/screens/05-ausruestung.jpg" width="640" height="1390" loading="lazy" alt="Gear in BibReady by category with weight"></div></div>
+    </div>
+    <div class="zig">
+      <div class="txt"><span class="num">3</span><h2>See what’s missing</h2><p>One tap on “Missing”, and you have your shopping list.
+        Check items off on race day, even without reception at bib pickup.</p></div>
+      <div class="crop"><div class="ph sm"><img src="../img/screens/07-packliste-fehlt.jpg" width="640" height="1390" loading="lazy" alt="Packing list in BibReady, filtered to missing items"></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="pro">
+      <div>
+        <span class="tag">PRO</span>
+        <h3>BibReady Pro</h3>
+        <p>With Pro, you get a Weather Check for your race day that shows which weather-dependent mandatory items you
+           will probably need. Plus unlimited races, PDF export for your crew and the race comparison with
+           shopping list.</p>
+        <p class="free">Free: all mandatory gear lists and matching for up to 3 upcoming races.</p>
+      </div>
+      <div class="price"><b>€19.99</b><span>per year<br>7-day free trial</span></div>
+    </div>
+  </div>
+</section>
+
+<p class="note">The organizer’s list always applies.</p>
+
+<footer>
+  <div class="wrap">
+    <a href="privacy.html">Privacy</a>
+    <a href="imprint.html">Legal Notice</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="support.html">Support</a>
+  </div>
+</footer>
+
+</body>
+</html>

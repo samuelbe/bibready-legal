@@ -9,6 +9,8 @@
 <meta property="og:description" content="Wähle dein Rennen, und BibReady sagt dir, was du schon hast und was dir noch fehlt. Für Trail- und Ultrarennen.">
 <meta property="og:image" content="https://bibready.app/img/apple-touch-icon.png">
 <meta name="theme-color" content="#F2552C">
+<link rel="alternate" hreflang="de" href="https://bibready.app/">
+<link rel="alternate" hreflang="en" href="https://bibready.app/en/">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <!-- Design „V2 · Vorher/Nachher“ (Vorschau: design/website-kernbotschaft-vorschau.html im App-Repo) -->
@@ -40,6 +42,9 @@
   header.top { display: flex; align-items: center; gap: 10px; padding: 18px 0; }
   header.top img { width: 34px; height: 34px; border-radius: 8px; }
   header.top b { font-size: 18px; }
+  header.top .lang { margin-left: auto; display: flex; gap: 10px; font-size: 14px; color: var(--muted); }
+  header.top .lang a { color: var(--muted); }
+  header.top .lang span { color: var(--text); font-weight: 600; }
 
   /* Kopfbereich */
   .hgrid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 20px; align-items: center; padding: 16px 0 56px; }
@@ -117,7 +122,8 @@
 <body>
 
 <div class="wrap">
-  <header class="top"><img src="img/icon.png" alt=""><b>BibReady</b></header>
+  <header class="top"><img src="img/icon.png" alt=""><b>BibReady</b>
+    <nav class="lang" aria-label="Sprache"><span aria-current="page">Deutsch</span><a href="en/index.html" hreflang="en" lang="en">English</a></nav></header>
   <div class="hgrid">
     <div>
       <p class="eyebrow">Pflichtausrüstung für Trail- und Ultrarennen</p>
